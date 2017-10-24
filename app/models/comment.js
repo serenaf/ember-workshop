@@ -4,5 +4,5 @@ export default DS.Model.extend({
   content: DS.attr('string'),
   user: DS.attr('string'),
   timeAgo: DS.attr('string'),
-  story: DS.belongsTo('story')
+  comments: DS.hasMany('comments', { inverse: null })
 });
