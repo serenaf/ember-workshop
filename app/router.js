@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('ask');
   this.route('jobs');
   this.route('frontpage');
+  this.route('item', { path: '/item/:id' });
 });
 
 export default Router;

@@ -12,6 +12,13 @@ export default DS.RESTAdapter.extend({
     let response = await this.request('GET', query);
     return response ? response[0] : {};
   },
+  findRecord(store, type, id) {
+    let url = this.buildUrl(`item/${id}`);
+    return this.get('ajax').request(
+      url,
+      { method: 'GET' }
+    );
+  },
   query(store, type, query) {
     return this.request('GET', query);
   },
