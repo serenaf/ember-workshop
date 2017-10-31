@@ -11,7 +11,7 @@ export default DS.Model.extend({
   type: DS.attr('string'),
   url: DS.attr('string'),
   domain: DS.attr('string'),
-  comments: DS.hasMany('comment'),
+  comments: DS.hasMany('comment', { async: true }),
 
   isInternalLink: computed.empty('domain'),
   externalUrl: computed('domain', 'isInternalLink', function() {
