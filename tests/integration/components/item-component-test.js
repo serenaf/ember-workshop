@@ -1,24 +1,36 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { make, manualSetup } from 'ember-data-factory-guy';
+import { click } from 'ember-native-dom-helpers';
+
 
 moduleForComponent('item-component', 'Integration | Component | item component', {
-  integration: true
+  integration: true,
+  beforeEach() {
+    manualSetup(this.container);
+  }
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+const TEMPLATE = hbs`{{item-component
+                  item=item
+                  markAsRead=(action markAsRead item.id)
+                }}`
 
-  this.render(hbs`{{item-component}}`);
+const SELECTORS = {
+  itemDeleteButton: '.test__item-delete-button',
+};
 
-  assert.equal(this.$().text().trim(), '');
+function renderComponent(component, options = {}) {
+  component.setProperties({
+    item: options.item,
+    markAsRead: options.markAsRead || (() => {}),
+  });
+  component.render(TEMPLATE);
+}
 
-  // Template block usage:
-  this.render(hbs`
-    {{#item-component}}
-      template block text
-    {{/item-component}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+test('it marks an item as read', async function(assert) {
+  assert.expect(1);
+  let item = make('item');
+  renderComponent(this, { item, markAsRead: () => assert.ok(true) });
+  await click(SELECTORS.itemDeleteButton)
 });
