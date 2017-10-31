@@ -1,6 +1,8 @@
 <div>
   <a href="{{item.externalUrl}}">{{item.title}}</a>
-  <span>{{item.points}} points by {{item.user}} {{item.timeAgo}} </span>
+  <div>
+    <span>{{item.points}} points by {{item.user}} {{item.timeAgo}} </span>
+    <span {{action markAsRead}} class='test__item-delete-button'>Mark as Read </span>
+  </div>
   {{#link-to 'item' item}} {{item.commentsCount}} Comments{{/link-to}}
-  <button class="test__item-delete-button" {{action markAsRead}}>Mark as Read </button>
 </div>
