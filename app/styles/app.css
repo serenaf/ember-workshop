@@ -33,3 +33,7 @@ body {
 .comment {
   padding-left: 50px;
 }
+
+.hide-button {
+  cursor: pointer;
+}
