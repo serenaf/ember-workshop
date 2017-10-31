@@ -1,12 +1,10 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('story', 'Unit | Model | item', {
-  // Specify the other units that are required for this test.
-  needs: []
+moduleForModel('item', 'Unit | Model | item', {
+  unit: true
 });
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok(!!model);
+test('it returns the correct external url', function(assert) {
+  let model = this.subject({'domain': ''});
+  assert.equal(model.get('externalUrl'), `https://news.ycombinator.com/item?id=${model.get('id')}`, 'it displays the correct external url');
 });
