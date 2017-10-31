@@ -4,5 +4,5 @@
     <span>{{item.points}} points by {{item.user}} {{item.timeAgo}} </span>
     <span {{action markAsRead}} class='test__item-delete-button'>Mark as Read </span>
   </div>
-  {{#link-to 'item' item}} {{item.commentsCount}} Comments{{/link-to}}
+  {{#link-to 'item' item.id}} {{item.commentsCount}} Comments{{/link-to}}
 </div>
