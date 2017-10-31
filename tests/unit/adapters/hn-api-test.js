@@ -1,4 +1,4 @@
-import { moduleFor, test } from 'ember-qunit';
+import { moduleFor, skip } from 'ember-qunit';
 
 moduleFor('adapter:hn-api', 'Unit | Adapter | hn api', {
   // Specify the other units that are required for this test.
@@ -6,7 +6,7 @@ moduleFor('adapter:hn-api', 'Unit | Adapter | hn api', {
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
+skip('it exists', function(assert) {
   let adapter = this.subject();
   assert.ok(adapter);
 });
