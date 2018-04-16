@@ -1,13 +1,12 @@
 import Component from '@ember/component';
-import Ember from 'ember';
 import { computed } from '@ember/object';
-
+import { A } from '@ember/array';
 
 export default Component.extend({
-  readItems: Ember.A(),
+  readItems: undefined,
   init() {
     this._super(...arguments);
-    this.readItems = [];
+    this.readItems = A();
   },
   filteredItems: computed('items.[]', 'readItems.[]', function() {
     return this.get('items').filter(item =>  !this.get('readItems').includes(item.get('id')));
